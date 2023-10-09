@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:sizzle_starter/src/core/localization/localization.dart';
+import 'package:sizzle_starter/src/core/routes/routes.dart';
 import 'package:sizzle_starter/src/feature/app/widget/locale_scope.dart';
 import 'package:sizzle_starter/src/feature/app/widget/theme_scope.dart';
-import 'package:sizzle_starter/src/feature/home/widget/home_screen.dart';
 
 /// {@template material_context}
 /// [MaterialContext] is an entry point to the material context.
@@ -18,11 +19,22 @@ class MaterialContext extends StatefulWidget {
 }
 
 class _MaterialContextState extends State<MaterialContext> {
+  late final GoRouter _router;
+
+  @override
+  void initState() {
+    _router = GoRouter(
+      routes: $appRoutes,
+      initialLocation: '/snippet',
+    );
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = ThemeScope.of(context).theme;
-
-    return MaterialApp(
+    return MaterialApp.router(
+      routerConfig: _router,
       debugShowCheckedModeBanner: false,
       theme: theme.lightTheme,
       darkTheme: theme.darkTheme,
@@ -30,7 +42,6 @@ class _MaterialContextState extends State<MaterialContext> {
       localizationsDelegates: Localization.localizationDelegates,
       supportedLocales: Localization.supportedLocales,
       locale: LocaleScope.of(context).locale,
-      home: const HomeScreen(),
     );
   }
 }
