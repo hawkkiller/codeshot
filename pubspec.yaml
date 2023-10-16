@@ -33,7 +33,7 @@ dependencies:
   flutter_bloc: 8.1.3
 
   # Router
-  go_router: 11.1.2
+  go_router: 11.1.4
 
   # Networking
   dio: 5.3.3
