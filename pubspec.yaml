@@ -71,7 +71,7 @@ dev_dependencies:
   flutter_launcher_icons: 0.13.1
   melos: 3.1.1
   intl_utils: 2.8.4
-  go_router_builder: 2.3.3
+  go_router_builder: 2.3.4
   build_runner: 2.4.6
 
 flutter:
